@@ -37,7 +37,7 @@
         <el-button type="primary" @click="add" v-if="info.isAdd"
           >添加</el-button
         >
-        <el-button type="primary" v-else>修改</el-button>
+        <el-button type="primary" v-else @click="updata">修改</el-button>
       </div>
     </el-dialog>
   </div>
@@ -76,6 +76,7 @@ export default {
       reqRoleAdd(this.form).then((res) => {
         this.reqRoleList();
         this.hide();
+        this.reset()
       });
     },
     lookOne(id) {
@@ -95,6 +96,14 @@ export default {
     close(){
       this.info.isShow = false
       this.reset()
+    },
+    updata(form){
+      this.form.menus = JSON.stringify(this.$refs.tree.getCheckedKeys());
+      reqRoleEdit(this.form).then(res=>{
+        this.hide();
+        this.reqRoleList();
+        this.reset()
+      })
     }
   },
   mounted() {

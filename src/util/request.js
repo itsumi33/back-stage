@@ -104,3 +104,59 @@ export const reqRoleEdit=(form)=>{
         data:form
     })
 }
+
+
+////////////////////////管理员管理///////////////////////////////////////
+// 管理员添加
+export const reqUserAdd=(form)=>{
+    return  axios({
+        url:addUrl+'/api/useradd',
+        method:'post',
+        data:qs.stringify(form)
+    })
+}
+// 管理员列表
+export const reqUserList=(params)=>{
+    return  axios({
+        url:addUrl+'/api/userlist',
+        method:'get',
+        params:params
+    })
+}
+
+// 管理员删除
+export const reqUserDel=(id)=>{
+    return  axios({
+        url:addUrl+'/api/userdelete',
+        method:'post',
+        data:id
+    })
+}
+
+// 管理员获取一条数据
+export const reqUserOne=(params)=>{
+    return  axios({
+        url:addUrl+'/api/userinfo',
+        method:'get',
+        params:params
+    })
+}
+
+
+
+// 角色修改
+export const reqUserEdit=(form)=>{
+    return  axios({
+        url:addUrl+'/api/useredit',
+        method:'post',
+        data:form
+    })
+}
+
+// 管理员总数
+export const reqUserCount=()=>{
+    return  axios({
+        url:addUrl+'/api/usercount',
+        method:'get',
+    })
+}
