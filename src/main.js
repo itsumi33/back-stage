@@ -13,6 +13,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 
+// 上传图片添加的前缀
+Vue.prototype.$preImg = 'http://localhost:3000'
+
 // 导入store
 import store from './store/index'
 

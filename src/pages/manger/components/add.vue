@@ -3,7 +3,7 @@
     <el-dialog :title="info.title" :visible.sync="info.isShow" :show-close='false'>
       <el-form :model="form">
         <el-form-item label="所属角色" :label-width="formLabelWidth">
-           <el-select v-model="form.pid" placeholder="请选择">
+           <el-select v-model="form.roleid" placeholder="请选择">
             <el-option label="请选择" :value="0" disabled></el-option>
             <el-option v-for='item in list' :key='item.id' :label='item.rolename' :value='item.id' ></el-option>
           </el-select>
@@ -67,7 +67,6 @@ export default {
         }),
         add(){
             // this.info.isShow = false;
-            this.form.roleid = this.form.pid
             reqUserAdd(this.form).then(res=>{
               this.hide()
               this.requestUserCount();
@@ -88,8 +87,7 @@ export default {
         },
         lookOne(id){
           reqUserOne({uid:id}).then(res=>{
-            this.form = res.data.list
-            this.form.pid = res.data.list.roleid;
+            this.form = res.data.list;
             this.form.password = ''
           })
         },
